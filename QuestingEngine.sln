@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Contract", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Service", "QuestingEngine.Service\QuestingEngine.Service.csproj", "{FA9C8D73-6800-476B-8AC9-07E46B9D9B44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Model", "QuestingEngine.Model\QuestingEngine.Model.csproj", "{5978BD3B-B321-4C39-AA56-4551A1C9246A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
