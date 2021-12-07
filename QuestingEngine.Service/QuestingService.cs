@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestingEngine.Repository;
+using System;
 using System.Threading.Tasks;
 
 namespace QuestingEngine.Service
@@ -10,9 +11,23 @@ namespace QuestingEngine.Service
 
     public class QuestingService : IQuestingService
     {
-        public Task<int> CalculateQuestPointEarned(int chipAmountBet, int playerLevel)
+        private readonly ILevelBonusRateRepository _bonusRateRepository;
+        private readonly IBetRateRepository _betRateRepository;
+
+        public QuestingService(ILevelBonusRateRepository bonusRateRepository, IBetRateRepository betRateRepository)
         {
-            throw new NotImplementedException();
+            _bonusRateRepository = bonusRateRepository;
+            _betRateRepository = betRateRepository;
+        }
+
+        public async Task<int> CalculateQuestPointEarned(int chipAmountBet, int playerLevel)
+        {
+            var levelBonusRate = await _bonusRateRepository.GetAsync(playerLevel);
+            var rateFromBet = await _betRateRepository.GetAsync(chipAmountBet);
+
+            var chipAmountEarned = (chipAmountBet * rateFromBet.Rate) + (playerLevel * levelBonusRate.BonusRate);
+
+            return (int)Math.Floor(chipAmountEarned);
         }
     }
 }

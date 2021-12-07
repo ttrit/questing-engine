@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuestingEngine.Contract\QuestingEngine.Contract.csproj" />
+    <ProjectReference Include="..\QuestingEngine.Model\QuestingEngine.Model.csproj" />
+    <ProjectReference Include="..\QuestingEngine.Service\QuestingEngine.Service.csproj" />
   </ItemGroup>
 
 </Project>

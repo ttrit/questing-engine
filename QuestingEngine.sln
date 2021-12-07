@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestingEngine.API", "QuestingEngine\QuestingEngine.API.csproj", "{6053BE7A-F642-4C30-A6FC-358E411DDB1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Contract", "QuestingEngine.Contract\QuestingEngine.Contract.csproj", "{9AECF28F-3891-4BC1-8A19-17F9060777C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestingEngine.Contract", "QuestingEngine.Contract\QuestingEngine.Contract.csproj", "{9AECF28F-3891-4BC1-8A19-17F9060777C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Service", "QuestingEngine.Service\QuestingEngine.Service.csproj", "{FA9C8D73-6800-476B-8AC9-07E46B9D9B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestingEngine.Service", "QuestingEngine.Service\QuestingEngine.Service.csproj", "{FA9C8D73-6800-476B-8AC9-07E46B9D9B44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Model", "QuestingEngine.Model\QuestingEngine.Model.csproj", "{5978BD3B-B321-4C39-AA56-4551A1C9246A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestingEngine.Model", "QuestingEngine.Model\QuestingEngine.Model.csproj", "{5978BD3B-B321-4C39-AA56-4551A1C9246A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestingEngine.Repository", "QuestingEngine.Repository\QuestingEngine.Repository.csproj", "{8DB0A794-8852-41CC-813D-333A2AB25058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5978BD3B-B321-4C39-AA56-4551A1C9246A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5978BD3B-B321-4C39-AA56-4551A1C9246A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5978BD3B-B321-4C39-AA56-4551A1C9246A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB0A794-8852-41CC-813D-333A2AB25058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB0A794-8852-41CC-813D-333A2AB25058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB0A794-8852-41CC-813D-333A2AB25058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB0A794-8852-41CC-813D-333A2AB25058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
