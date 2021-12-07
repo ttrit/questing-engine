@@ -30,10 +30,16 @@ namespace QuestingEngine
             });
             services.Configure<MongoConfiguration>(Configuration.GetSection("MongoDb"));
             services
+                // Register services
                 .AddScoped<IBonusRateService, BonusRateService>()
                 .AddScoped<IBetRateService, BetRateService>()
+                .AddScoped<IQuestingService, QuestingService>()
+                // Register repositories
                 .AddScoped<ILevelBonusRateRepository, LevelBonusRateRepository>()
-                .AddScoped<IBetRateRepository, BetRateRepository>();
+                .AddScoped<IBetRateRepository, BetRateRepository>()
+                .AddScoped<IMilestoneRepository, MilestoneRepository>()
+                .AddScoped<IQuestRepository, QuestRepository>()
+                .AddScoped<IPlayerRepository, PlayerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
