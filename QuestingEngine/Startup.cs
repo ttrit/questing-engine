@@ -1,12 +1,17 @@
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using QuestingEngine.API.Mappers;
 using QuestingEngine.Models;
 using QuestingEngine.Repository;
 using QuestingEngine.Service;
+using QuestingEngine.Service.Commands;
+using System.Reflection;
 
 namespace QuestingEngine
 {
@@ -22,6 +27,14 @@ namespace QuestingEngine
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            var mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMediatR(typeof(UpdatePlayerPointCommand).GetTypeInfo().Assembly);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -33,7 +46,9 @@ namespace QuestingEngine
                 // Register services
                 .AddScoped<IBonusRateService, BonusRateService>()
                 .AddScoped<IBetRateService, BetRateService>()
-                .AddScoped<IQuestingService, QuestingService>()
+                .AddScoped<IQuestService, QuestService>()
+                .AddScoped<IMilestoneService, MilestoneService>()
+                .AddScoped<IPlayerService, PlayerService>()
                 // Register repositories
                 .AddScoped<ILevelBonusRateRepository, LevelBonusRateRepository>()
                 .AddScoped<IBetRateRepository, BetRateRepository>()

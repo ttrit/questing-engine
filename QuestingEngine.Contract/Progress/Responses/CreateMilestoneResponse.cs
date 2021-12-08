@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using QuestingEngine.Model;
+using System.Collections.Generic;
 
 namespace QuestingEngine.Contract.Progress.Responses
 {

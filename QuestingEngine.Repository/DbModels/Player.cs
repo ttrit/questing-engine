@@ -13,6 +13,6 @@ namespace QuestingEngine.Repository.DbModels
         public int Level { get; set; }
         public ObjectId CurrentQuest { get; set; }
         public int TotalPoint { get; set; }
-        public IEnumerable<ObjectId> CompletedMilestone { get; set; }
+        public IEnumerable<ObjectId> CompletedMilestones { get; set; }
     }
 }

@@ -45,6 +45,6 @@ namespace QuestingEngine.Repository
             await _collection.DeleteOneAsync(x => x.Id == id);
 
         public async Task<BetRate> GetAsync(int chipAmountBet) =>
-            await _collection.Find(x => x.UpperBound > chipAmountBet && x.LowerBound < chipAmountBet).FirstOrDefaultAsync();
+            await _collection.Find(x => x.UpperBound >= chipAmountBet && x.LowerBound <= chipAmountBet).FirstOrDefaultAsync();
     }
 }
