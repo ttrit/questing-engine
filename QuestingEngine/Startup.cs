@@ -49,12 +49,18 @@ namespace QuestingEngine
                 .AddScoped<IQuestService, QuestService>()
                 .AddScoped<IMilestoneService, MilestoneService>()
                 .AddScoped<IPlayerService, PlayerService>()
+                .AddScoped<ISeedDataService, SeedDataService>()
                 // Register repositories
                 .AddScoped<ILevelBonusRateRepository, LevelBonusRateRepository>()
                 .AddScoped<IBetRateRepository, BetRateRepository>()
                 .AddScoped<IMilestoneRepository, MilestoneRepository>()
                 .AddScoped<IQuestRepository, QuestRepository>()
                 .AddScoped<IPlayerRepository, PlayerRepository>();
+
+            // Seed data
+            var provider = services.BuildServiceProvider();
+            var seedDataService = provider.GetRequiredService<ISeedDataService>();
+            seedDataService.InitializeData();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

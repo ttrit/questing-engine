@@ -14,6 +14,7 @@ namespace QuestingEngine.Repository
     {
         Task Create(Model.Player player);
         Task<Model.Player> GetAsync(string id);
+        Task<List<Model.Player>> GetAsync();
         Task Update(Model.Player player);
     }
 
@@ -68,6 +69,11 @@ namespace QuestingEngine.Repository
             player.CurrentQuest = _mapper.Map<Model.Quest>(questDb);
 
             return player;
+        }
+
+        public async Task<List<Model.Player>> GetAsync()
+        {
+            return _mapper.Map<List<Model.Player>>(await _playerCollection.Find(_ => true).ToListAsync());
         }
 
         public async Task Update(Model.Player player)

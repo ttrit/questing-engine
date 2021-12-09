@@ -12,8 +12,9 @@ namespace QuestingEngine.Repository
 {
     public interface IQuestRepository
     {
-        Task Create(Model.Quest quest);
+        Task<string> Create(Model.Quest quest);
         Task<Model.Quest> GetAsync(string id);
+        Task<List<Model.Quest>> GetAsync();
     }
 
     public class QuestRepository : IQuestRepository
@@ -31,7 +32,7 @@ namespace QuestingEngine.Repository
             _questCollection = mongoDb.GetCollection<Quest>("Quest");
         }
 
-        public async Task Create(Model.Quest quest)
+        public async Task<string> Create(Model.Quest quest)
         {
             var questDb = _mapper.Map<Quest>(quest);
             questDb.Id = ObjectId.GenerateNewId().ToString();
@@ -39,11 +40,17 @@ namespace QuestingEngine.Repository
             questDb.Milestones = milestones.Select(m => new ObjectId(m.Id)).ToList();
 
             await _questCollection.InsertOneAsync(questDb);
+            return questDb.Id;
         }
             
         public async Task<Model.Quest> GetAsync(string id)
         {
             return _mapper.Map<Model.Quest>(await _questCollection.Find(x => x.Id == id).FirstOrDefaultAsync());
+        }
+
+        public async Task<List<Model.Quest>> GetAsync()
+        {
+            return _mapper.Map<List<Model.Quest>>(await _questCollection.Find(_ => true).ToListAsync());
         }
     }
 }

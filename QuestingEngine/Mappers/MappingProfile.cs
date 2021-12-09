@@ -8,9 +8,13 @@ namespace QuestingEngine.API.Mappers
     {
         public MappingProfile()
         {
+            CreateMap<Repository.DbModels.Player, Player>()
+                .ForMember(des => des.CurrentQuest, act => act.Ignore())
+                .ForMember(des => des.CompletedMilestones, act => act.Ignore());
             CreateMap<Repository.DbModels.Milestone, Milestone>();
             CreateMap<Repository.DbModels.Quest, Quest>()
                 .ForMember(des => des.Milestones, act => act.Ignore());
+            
 
             CreateMap<Player, Repository.DbModels.Player>()
                 .ForMember(des => des.CurrentQuest, act => act.MapFrom(src => new ObjectId(src.CurrentQuest.Id)))
