@@ -53,6 +53,7 @@ namespace QuestingEngine.Repository
             var playerDb = await _playerCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
             var player = new Model.Player
             {
+                Id = playerDb.Id.ToString(),
                 Name = playerDb.Name,
                 Level = playerDb.Level,
                 TotalPoint = playerDb.TotalPoint,
@@ -78,7 +79,10 @@ namespace QuestingEngine.Repository
 
         public async Task UpdateAsync(Model.Player player)
         {
-            await _playerCollection.ReplaceOneAsync(x => x.Id == player.Id, _mapper.Map<Player>(player));
+            var playerDb = _mapper.Map<Player>(player);
+            playerDb.CompletedMilestones = player.CompletedMilestones.Select(p => new ObjectId(p.Id));
+
+            await _playerCollection.ReplaceOneAsync(x => x.Id == player.Id, playerDb);
         }
     }
 }

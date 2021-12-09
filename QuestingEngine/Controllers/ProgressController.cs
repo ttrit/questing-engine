@@ -14,16 +14,13 @@ namespace QuestingEngine.Controllers
     {
         private readonly IQuestService _questingService;
         private readonly IPlayerService _playerService;
-        private readonly IMediator _mediator;
 
         public ProgressController(
             IQuestService questingService,
-            IPlayerService playerService,
-            IMediator mediator)
+            IPlayerService playerService)
         {
             _questingService = questingService ?? throw new ArgumentNullException(nameof(questingService));
             _playerService = playerService ?? throw new ArgumentNullException(nameof(playerService));
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpPost]
