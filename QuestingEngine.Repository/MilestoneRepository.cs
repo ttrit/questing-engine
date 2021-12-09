@@ -11,7 +11,7 @@ namespace QuestingEngine.Repository
 {
     public interface IMilestoneRepository
     {
-        Task<string> Create(Model.Milestone milestone);
+        Task<string> CreateAsync(Model.Milestone milestone);
         Task<Model.Milestone> GetAsync(string id);
         Task<List<Model.Milestone>> GetAsync();
     }
@@ -32,7 +32,7 @@ namespace QuestingEngine.Repository
             _collection = mongoDb.GetCollection<Milestone>("Milestone");
         }
 
-        public async Task<string> Create(Model.Milestone milestone) 
+        public async Task<string> CreateAsync(Model.Milestone milestone) 
         {
             var milestoneDb = _mapper.Map<Milestone>(milestone);
             milestoneDb.Id = ObjectId.GenerateNewId().ToString();

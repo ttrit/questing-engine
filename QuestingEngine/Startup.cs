@@ -44,10 +44,7 @@ namespace QuestingEngine
             services.Configure<MongoConfiguration>(Configuration.GetSection("MongoDb"));
             services
                 // Register services
-                .AddScoped<IBonusRateService, BonusRateService>()
-                .AddScoped<IBetRateService, BetRateService>()
                 .AddScoped<IQuestService, QuestService>()
-                .AddScoped<IMilestoneService, MilestoneService>()
                 .AddScoped<IPlayerService, PlayerService>()
                 .AddScoped<ISeedDataService, SeedDataService>()
                 // Register repositories

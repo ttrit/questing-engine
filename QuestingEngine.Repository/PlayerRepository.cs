@@ -12,10 +12,10 @@ namespace QuestingEngine.Repository
 {
     public interface IPlayerRepository
     {
-        Task Create(Model.Player player);
+        Task CreateAsync(Model.Player player);
         Task<Model.Player> GetAsync(string id);
         Task<List<Model.Player>> GetAsync();
-        Task Update(Model.Player player);
+        Task UpdateAsync(Model.Player player);
     }
 
     public class PlayerRepository : IPlayerRepository
@@ -39,7 +39,7 @@ namespace QuestingEngine.Repository
             _mapper = mapper;
         }
 
-        public async Task Create(Model.Player player)
+        public async Task CreateAsync(Model.Player player)
         {
             var playerDb = _mapper.Map<Player>(player);
             playerDb.Id = ObjectId.GenerateNewId().ToString();
@@ -76,7 +76,7 @@ namespace QuestingEngine.Repository
             return _mapper.Map<List<Model.Player>>(await _playerCollection.Find(_ => true).ToListAsync());
         }
 
-        public async Task Update(Model.Player player)
+        public async Task UpdateAsync(Model.Player player)
         {
             await _playerCollection.ReplaceOneAsync(x => x.Id == player.Id, _mapper.Map<Player>(player));
         }

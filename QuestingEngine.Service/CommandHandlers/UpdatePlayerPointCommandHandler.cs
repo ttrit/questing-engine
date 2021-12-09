@@ -22,7 +22,7 @@ namespace QuestingEngine.Service.CommandHandlers
 
             player.TotalPoint += request.UpdatePoint;
 
-            await _playerRepository.Update(player);
+            await _playerRepository.UpdateAsync(player);
 
             return true;
         }

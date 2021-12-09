@@ -9,8 +9,6 @@ namespace QuestingEngine.Service
 {
     public interface IQuestService
     {
-        Task Create(Quest quest);
-
         Task<int> UpdateQuestPointEarned(string playerId, int playerLevel, int chipAmountBet);
     }
 
@@ -31,11 +29,6 @@ namespace QuestingEngine.Service
             _bonusRateRepository = bonusRateRepository ?? throw new ArgumentNullException(nameof(bonusRateRepository));
             _betRateRepository = betRateRepository ?? throw new ArgumentNullException(nameof(betRateRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        }
-
-        public async Task Create(Quest quest)
-        {
-            await _questRepository.Create(quest);
         }
 
         public async Task<int> UpdateQuestPointEarned(string playerId, int playerLevel, int chipAmountBet)

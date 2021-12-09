@@ -7,7 +7,6 @@ namespace QuestingEngine.Service
 {
     public interface IPlayerService
     {
-        Task Create(Player player);
         Task<int> GetCurrentQuestStatus(string playerId);
         Task<IEnumerable<Milestone>> GetCompletedMilestones(string playerId);
     }
@@ -37,11 +36,6 @@ namespace QuestingEngine.Service
         {
             var player = await _playerRepository.GetAsync(playerId);
             return player.CompletedMilestones;
-        }
-
-        public async Task Create(Player player)
-        {
-            await _playerRepository.Create(player);
         }
     }
 }

@@ -72,9 +72,9 @@ namespace QuestingEngine.Service
                 PointToComplete = 100,
                 ChipsAwarded = 30
             };
-            milestone1Id = await _milestoneRepository.Create(milestone1);
-            milestone2Id = await _milestoneRepository.Create(milestone2);
-            milestone3Id = await _milestoneRepository.Create(milestone3);
+            milestone1Id = await _milestoneRepository.CreateAsync(milestone1);
+            milestone2Id = await _milestoneRepository.CreateAsync(milestone2);
+            milestone3Id = await _milestoneRepository.CreateAsync(milestone3);
 
 
             var quest = new Quest
@@ -88,7 +88,7 @@ namespace QuestingEngine.Service
                     },
                 TotalPointToComplete = 50
             };
-            questId = await _questRepository.Create(quest);
+            questId = await _questRepository.CreateAsync(quest);
 
 
 
@@ -100,7 +100,7 @@ namespace QuestingEngine.Service
                 TotalPoint = 20,
                 CompletedMilestones = new List<Milestone> { new Milestone() { Id = milestone1Id } }
             };
-            await _playerRepository.Create(player);
+            await _playerRepository.CreateAsync(player);
 
             var betRate1 = new Repository.DbModels.BetRate
             {

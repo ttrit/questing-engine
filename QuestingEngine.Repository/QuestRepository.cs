@@ -12,7 +12,7 @@ namespace QuestingEngine.Repository
 {
     public interface IQuestRepository
     {
-        Task<string> Create(Model.Quest quest);
+        Task<string> CreateAsync(Model.Quest quest);
         Task<Model.Quest> GetAsync(string id);
         Task<List<Model.Quest>> GetAsync();
     }
@@ -32,7 +32,7 @@ namespace QuestingEngine.Repository
             _questCollection = mongoDb.GetCollection<Quest>("Quest");
         }
 
-        public async Task<string> Create(Model.Quest quest)
+        public async Task<string> CreateAsync(Model.Quest quest)
         {
             var questDb = _mapper.Map<Quest>(quest);
             questDb.Id = ObjectId.GenerateNewId().ToString();
